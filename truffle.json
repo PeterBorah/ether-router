@@ -11,7 +11,8 @@
   },
   "deploy": [
     "BetterAddress",
-    "Counter"
+    "Counter",
+    "TheAnswer"
   ],
   "rpc": {
     "host": "localhost",

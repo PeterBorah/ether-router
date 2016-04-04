@@ -25,4 +25,17 @@ contract('BetterAddress', function(accounts) {
         done();
       }).catch(done)
   });
+
+  it("should be able to get back a return value", function(done) {
+    var better_address = BetterAddress.deployed();
+    var fake_answer = TheAnswer.at(better_address.address);
+
+    better_address.set_destination(TheAnswer.deployed().address).
+      then(function() { return fake_answer.getAnswer.call() }).
+      then(function(result) {
+        assert.equal(result, 42);
+        done();
+      }).catch(done)
+
+  });
 });
