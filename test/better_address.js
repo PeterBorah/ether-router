@@ -9,7 +9,7 @@ contract('BetterAddress', function(accounts) {
       }).catch(done)
   });
 
-  xit("should be able to invoke a function", function(done) {
+  it("should be able to invoke a function", function(done) {
     var better_address = BetterAddress.deployed();
     var counter = Counter.deployed();
 

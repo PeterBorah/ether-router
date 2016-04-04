@@ -16,4 +16,12 @@ contract BetterAddress {
 
     return dest;
   }
+
+  function() {
+    address d = destination;
+    assembly {
+      calldatacopy(mload(0x40), 0, calldatasize)
+      let r := call(1000000, d, 0, mload(0x40), calldatasize, 0, 0)
+    }
+  }
 }
