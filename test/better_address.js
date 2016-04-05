@@ -36,6 +36,19 @@ contract('BetterAddress', function(accounts) {
         assert.equal(result, 42);
         done();
       }).catch(done)
+  });
 
+  it("should be able to pass along arguments", function(done) {
+    var better_address = BetterAddress.deployed();
+    var multiplier = Multiplier.deployed();
+
+    var fake_multiplier = Multiplier.at(better_address.address);
+
+    better_address.set_destination(Multiplier.deployed().address).
+      then(function() { return fake_multiplier.multiply.call(7, 3) }).
+      then(function(result) {
+        assert.equal(result, 21);
+        done();
+      }).catch(done)
   });
 });

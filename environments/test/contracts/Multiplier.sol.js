@@ -5,17 +5,17 @@
 (function() {
 
   var contract_data = {
-    abi: [{"constant":true,"inputs":[],"name":"count","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[],"name":"ping","outputs":[],"type":"function"}],
-    binary: "606060405260438060106000396000f3606060405260e060020a600035046306661abd811460245780635c36b18614602c575b005b603960005481565b6022600080546001019055565b6060908152602090f3",
-    unlinked_binary: "606060405260438060106000396000f3606060405260e060020a600035046306661abd811460245780635c36b18614602c575b005b603960005481565b6022600080546001019055565b6060908152602090f3",
-    address: "0x2cb4f56941c03939ed33490e0897dee7ab2d9cf7",
+    abi: [{"constant":false,"inputs":[{"name":"x","type":"uint256"},{"name":"y","type":"uint256"}],"name":"multiply","outputs":[{"name":"","type":"uint256"}],"type":"function"}],
+    binary: "6060604052602b8060106000396000f3606060405260e060020a6000350463165c4a168114601a575b005b602435600435026060908152602090f3",
+    unlinked_binary: "6060604052602b8060106000396000f3606060405260e060020a6000350463165c4a168114601a575b005b602435600435026060908152602090f3",
+    address: "0x8efbbdbd3401b1ec6f4b6a3a7c98a4d31c162271",
     generated_with: "2.0.6",
-    contract_name: "Counter"
+    contract_name: "Multiplier"
   };
 
   function Contract() {
     if (Contract.Pudding == null) {
-      throw new Error("Counter error: Please call load() first before creating new instance of this contract.");
+      throw new Error("Multiplier error: Please call load() first before creating new instance of this contract.");
     }
 
     Contract.Pudding.apply(this, arguments);
@@ -32,7 +32,7 @@
 
   Contract.new = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Counter error: Please call load() first before calling new().");
+      throw new Error("Multiplier error: Please call load() first before calling new().");
     }
 
     return Contract.Pudding.new.apply(Contract, arguments);
@@ -40,7 +40,7 @@
 
   Contract.at = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Counter error: lease call load() first before calling at().");
+      throw new Error("Multiplier error: lease call load() first before calling at().");
     }
 
     return Contract.Pudding.at.apply(Contract, arguments);
@@ -48,7 +48,7 @@
 
   Contract.deployed = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Counter error: Please call load() first before calling deployed().");
+      throw new Error("Multiplier error: Please call load() first before calling deployed().");
     }
 
     return Contract.Pudding.deployed.apply(Contract, arguments);
@@ -59,7 +59,7 @@
   } else {
     // There will only be one version of Pudding in the browser,
     // and we can use that.
-    window.Counter = Contract;
+    window.Multiplier = Contract;
   }
 
 })();
