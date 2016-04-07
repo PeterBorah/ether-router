@@ -5,17 +5,17 @@
 (function() {
 
   var contract_data = {
-    abi: [{"constant":true,"inputs":[],"name":"count","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[],"name":"ping","outputs":[],"type":"function"}],
-    binary: "606060405260438060106000396000f3606060405260e060020a600035046306661abd811460245780635c36b18614602c575b005b603960005481565b6022600080546001019055565b6060908152602090f3",
-    unlinked_binary: "606060405260438060106000396000f3606060405260e060020a600035046306661abd811460245780635c36b18614602c575b005b603960005481565b6022600080546001019055565b6060908152602090f3",
-    address: "0xaa3ab1325d30fbeea4bba1f5351b82243e79aeac",
+    abi: [{"constant":false,"inputs":[],"name":"getNumbers","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"type":"function"}],
+    binary: "606060405260408060106000396000f3606060405260e060020a600035046389f915f68114601a575b005b600460609081526008608052600f60a052601060c0908152601760e052602a6101005290f3",
+    unlinked_binary: "606060405260408060106000396000f3606060405260e060020a600035046389f915f68114601a575b005b600460609081526008608052600f60a052601060c0908152601760e052602a6101005290f3",
+    address: "",
     generated_with: "2.0.6",
-    contract_name: "Counter"
+    contract_name: "Lost"
   };
 
   function Contract() {
     if (Contract.Pudding == null) {
-      throw new Error("Counter error: Please call load() first before creating new instance of this contract.");
+      throw new Error("Lost error: Please call load() first before creating new instance of this contract.");
     }
 
     Contract.Pudding.apply(this, arguments);
@@ -32,7 +32,7 @@
 
   Contract.new = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Counter error: Please call load() first before calling new().");
+      throw new Error("Lost error: Please call load() first before calling new().");
     }
 
     return Contract.Pudding.new.apply(Contract, arguments);
@@ -40,7 +40,7 @@
 
   Contract.at = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Counter error: lease call load() first before calling at().");
+      throw new Error("Lost error: lease call load() first before calling at().");
     }
 
     return Contract.Pudding.at.apply(Contract, arguments);
@@ -48,7 +48,7 @@
 
   Contract.deployed = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Counter error: Please call load() first before calling deployed().");
+      throw new Error("Lost error: Please call load() first before calling deployed().");
     }
 
     return Contract.Pudding.deployed.apply(Contract, arguments);
@@ -59,7 +59,7 @@
   } else {
     // There will only be one version of Pudding in the browser,
     // and we can use that.
-    window.Counter = Contract;
+    window.Lost = Contract;
   }
 
 })();

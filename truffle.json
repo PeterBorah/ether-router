@@ -10,10 +10,7 @@
     "images/": "images/"
   },
   "deploy": [
-    "BetterAddress",
-    "Counter",
-    "TheAnswer",
-    "Multiplier"
+    "BetterAddress"
   ],
   "rpc": {
     "host": "localhost",
