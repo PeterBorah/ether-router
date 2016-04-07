@@ -1,6 +1,5 @@
 contract BetterAddress {
   address public destination;
-  bytes4 data;
 
   function set_destination(address _destination) {
     destination = _destination;

@@ -1,14 +1,4 @@
 contract('BetterAddress', function(accounts) {
-  it("should store and retrieve an address", function(done) {
-    var better_address = BetterAddress.deployed();
-    better_address.set_destination(Counter.deployed().address).
-      then(function() { return better_address.get_destination.call() }).
-      then(function(result) {
-        assert.equal(result, Counter.deployed().address);
-        done();
-      }).catch(done)
-  });
-
   it("should be able to invoke a function", function(done) {
     var better_address = BetterAddress.deployed();
     var counter = Counter.deployed();
@@ -48,6 +38,19 @@ contract('BetterAddress', function(accounts) {
       then(function() { return fake_multiplier.multiply.call(7, 3) }).
       then(function(result) {
         assert.equal(result, 21);
+        done();
+      }).catch(done)
+  });
+
+  xit("should be able to get multiple return values", function(done) {
+    var better_address = BetterAddress.deployed();
+    var fake_double_answer = TheDoubleAnswer.at(better_address.address);
+
+    better_address.set_destination(TheDoubleAnswer.deployed().address).
+      then(function() { return fake_double_answer.getAnswer.call() }).
+      then(function(result) {
+        assert.equal(result[0], 42);
+        assert.equal(result[1], 42);
         done();
       }).catch(done)
   });

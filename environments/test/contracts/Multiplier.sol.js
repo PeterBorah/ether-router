@@ -8,7 +8,7 @@
     abi: [{"constant":false,"inputs":[{"name":"x","type":"uint256"},{"name":"y","type":"uint256"}],"name":"multiply","outputs":[{"name":"","type":"uint256"}],"type":"function"}],
     binary: "6060604052602b8060106000396000f3606060405260e060020a6000350463165c4a168114601a575b005b602435600435026060908152602090f3",
     unlinked_binary: "6060604052602b8060106000396000f3606060405260e060020a6000350463165c4a168114601a575b005b602435600435026060908152602090f3",
-    address: "0x8efbbdbd3401b1ec6f4b6a3a7c98a4d31c162271",
+    address: "0x1048bad1dd017854a84b6046069323cb8b64788c",
     generated_with: "2.0.6",
     contract_name: "Multiplier"
   };
