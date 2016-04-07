@@ -10,13 +10,9 @@ contract BetterAddress {
   function() {
     var (destination, outsize) = resolver.lookup(msg.sig);
     assembly {
-      let inloc := mload(0x40)
-      calldatacopy(inloc, 0, calldatasize)
-      let outloc := add(inloc, calldatasize)
-      mstore(0x40, outloc)
-      let r := callcode(1000000, destination, 0, inloc, calldatasize, outloc, outsize)
-      mstore(0x40, add(outloc, outsize))
-      return(outloc, outsize)
+      calldatacopy(mload(0x40), 0, calldatasize)
+      let r := callcode(1000000, destination, 0, mload(0x40), calldatasize, mload(0x40), outsize)
+      return(mload(0x40), outsize)
     }
   }
 }
