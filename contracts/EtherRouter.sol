@@ -1,9 +1,9 @@
-import "Resolver.sol"; 
+import "Resolver.sol";
 
-contract BetterAddress {
+contract EtherRouter {
   Resolver resolver;
 
-  function BetterAddress() {
+  function EtherRouter() {
     resolver = new Resolver();
   }
 

@@ -10,7 +10,7 @@
     "images/": "images/"
   },
   "deploy": [
-    "BetterAddress"
+    "EtherRouter"
   ],
   "rpc": {
     "host": "localhost",

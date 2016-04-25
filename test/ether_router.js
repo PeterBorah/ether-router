@@ -1,6 +1,6 @@
-contract('BetterAddress', function(accounts) {
+contract('EtherRouter', function(accounts) {
   it("should be able to get back a return value", function(done) {
-    var fake_answer = TheAnswer.at(BetterAddress.deployed().address);
+    var fake_answer = TheAnswer.at(EtherRouter.deployed().address);
 
       fake_answer.getAnswer.call().
       then(function(result) {
@@ -10,7 +10,7 @@ contract('BetterAddress', function(accounts) {
   });
 
   it("should be able to pass along arguments", function(done) {
-    var fake_multiplier = Multiplier.at(BetterAddress.deployed().address);
+    var fake_multiplier = Multiplier.at(EtherRouter.deployed().address);
 
       fake_multiplier.multiply.call(7, 3).
       then(function(result) {
@@ -20,7 +20,7 @@ contract('BetterAddress', function(accounts) {
   });
 
   it("should be able to get multiple return values", function(done) {
-    var fake_lost = Lost.at(BetterAddress.deployed().address);
+    var fake_lost = Lost.at(EtherRouter.deployed().address);
 
       fake_lost.getNumbers.call().
       then(function(result) {
