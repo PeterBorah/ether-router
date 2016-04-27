@@ -3,8 +3,8 @@ import "Resolver.sol";
 contract EtherRouter {
   Resolver resolver;
 
-  function EtherRouter() {
-    resolver = new Resolver();
+  function EtherRouter(Resolver _resolver) {
+    resolver = _resolver;
   }
 
   function() {

@@ -10,7 +10,10 @@
     "images/": "images/"
   },
   "deploy": [
-    "EtherRouter"
+    "Resolver",
+    "TheAnswer",
+    "Multiplier",
+    "Lost"
   ],
   "rpc": {
     "host": "localhost",
