@@ -13,7 +13,9 @@
     "Resolver",
     "TheAnswer",
     "Multiplier",
-    "Lost"
+    "Lost",
+    "SimpleStore",
+    "ResolverAccessor"
   ],
   "rpc": {
     "host": "localhost",

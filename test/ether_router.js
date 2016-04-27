@@ -48,4 +48,37 @@ contract('EtherRouter', function(accounts) {
           }).catch(done)
       }).catch(done)
   });
+
+  it("should be able to store data", function(done) {
+    var resolver = Resolver.deployed();
+
+    EtherRouter.new(resolver.address).
+      then(function(ether_router) {
+        var fake_simple_store = SimpleStore.at(ether_router.address);
+        resolver.register("store(uint256)", SimpleStore.deployed().address, 0).
+          then(function() { return resolver.register("getStored()", SimpleStore.deployed().address, 32) }).
+          then(function() { return fake_simple_store.store(42) }).
+          then(function() { return fake_simple_store.getStored.call() }).
+          then(function(result) {
+            assert.equal(result, 42);
+            done();
+          }).catch(done)
+      }).catch(done)
+  });
+
+  it("should be able to read data on the contract", function(done) {
+    var resolver = Resolver.deployed();
+
+    EtherRouter.new(resolver.address).
+      then(function(ether_router) {
+        var fake_resolver_accessor = ResolverAccessor.at(ether_router.address);
+        resolver.register("getResolver()", ResolverAccessor.deployed().address, 32).
+          then(function() { return fake_resolver_accessor.getResolver.call() }).
+          then(function(result) {
+            assert.equal(result, resolver.address);
+            done();
+          }).catch(done)
+      }).catch(done)
+
+  });
 });

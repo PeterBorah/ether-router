@@ -5,17 +5,17 @@
 (function() {
 
   var contract_data = {
-    abi: [{"constant":false,"inputs":[{"name":"x","type":"uint256"},{"name":"y","type":"uint256"}],"name":"multiply","outputs":[{"name":"","type":"uint256"}],"type":"function"}],
-    binary: "6060604052602b8060106000396000f3606060405260e060020a6000350463165c4a168114601a575b005b602435600435026060908152602090f3",
-    unlinked_binary: "6060604052602b8060106000396000f3606060405260e060020a6000350463165c4a168114601a575b005b602435600435026060908152602090f3",
-    address: "0x25bc1354229f606ccfb03130c18f4492c2eefcc0",
+    abi: [{"constant":false,"inputs":[],"name":"getResolver","outputs":[{"name":"","type":"address"}],"type":"function"}],
+    binary: "6060604052603d8060106000396000f3606060405260e060020a6000350463a9dc491d8114601a575b005b60005473ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
+    unlinked_binary: "6060604052603d8060106000396000f3606060405260e060020a6000350463a9dc491d8114601a575b005b60005473ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
+    address: "0xb62c20b8551309289d6258645d73c65fe52a7708",
     generated_with: "2.0.6",
-    contract_name: "Multiplier"
+    contract_name: "ResolverAccessor"
   };
 
   function Contract() {
     if (Contract.Pudding == null) {
-      throw new Error("Multiplier error: Please call load() first before creating new instance of this contract.");
+      throw new Error("ResolverAccessor error: Please call load() first before creating new instance of this contract.");
     }
 
     Contract.Pudding.apply(this, arguments);
@@ -32,7 +32,7 @@
 
   Contract.new = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Multiplier error: Please call load() first before calling new().");
+      throw new Error("ResolverAccessor error: Please call load() first before calling new().");
     }
 
     return Contract.Pudding.new.apply(Contract, arguments);
@@ -40,7 +40,7 @@
 
   Contract.at = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Multiplier error: lease call load() first before calling at().");
+      throw new Error("ResolverAccessor error: lease call load() first before calling at().");
     }
 
     return Contract.Pudding.at.apply(Contract, arguments);
@@ -48,7 +48,7 @@
 
   Contract.deployed = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Multiplier error: Please call load() first before calling deployed().");
+      throw new Error("ResolverAccessor error: Please call load() first before calling deployed().");
     }
 
     return Contract.Pudding.deployed.apply(Contract, arguments);
@@ -59,7 +59,7 @@
   } else {
     // There will only be one version of Pudding in the browser,
     // and we can use that.
-    window.Multiplier = Contract;
+    window.ResolverAccessor = Contract;
   }
 
 })();
