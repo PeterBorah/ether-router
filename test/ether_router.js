@@ -79,6 +79,20 @@ contract('EtherRouter', function(accounts) {
             done();
           }).catch(done)
       }).catch(done)
+  });
 
+  it("should keep its msg.sender", function(done) {
+    var resolver = Resolver.deployed();
+
+    EtherRouter.new(resolver.address).
+      then(function(ether_router) {
+        var fake_sender_checker = SenderChecker.at(ether_router.address);
+        resolver.register("checkSender()", SenderChecker.deployed().address, 32).
+          then(function() { return fake_sender_checker.checkSender.call() }).
+          then(function(result) {
+            assert.equal(result, accounts[0]);
+            done();
+          }).catch(done)
+      }).catch(done)
   });
 });

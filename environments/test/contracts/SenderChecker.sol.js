@@ -5,17 +5,17 @@
 (function() {
 
   var contract_data = {
-    abi: [{"constant":false,"inputs":[],"name":"getNumbers","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"type":"function"}],
-    binary: "606060405260408060106000396000f3606060405260e060020a600035046389f915f68114601a575b005b600460609081526008608052600f60a052601060c0908152601760e052602a6101005290f3",
-    unlinked_binary: "606060405260408060106000396000f3606060405260e060020a600035046389f915f68114601a575b005b600460609081526008608052600f60a052601060c0908152601760e052602a6101005290f3",
-    address: "0x6adabdfb0fc853cd652baed9241898e8bf936607",
+    abi: [{"constant":false,"inputs":[],"name":"checkSender","outputs":[{"name":"","type":"address"}],"type":"function"}],
+    binary: "6060604052603b8060106000396000f3606060405260e060020a600035046347fb0bed8114601a575b005b3373ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
+    unlinked_binary: "6060604052603b8060106000396000f3606060405260e060020a600035046347fb0bed8114601a575b005b3373ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
+    address: "0x87270d6f5716e487b80b78b7a73104f826dd0b25",
     generated_with: "2.0.6",
-    contract_name: "Lost"
+    contract_name: "SenderChecker"
   };
 
   function Contract() {
     if (Contract.Pudding == null) {
-      throw new Error("Lost error: Please call load() first before creating new instance of this contract.");
+      throw new Error("SenderChecker error: Please call load() first before creating new instance of this contract.");
     }
 
     Contract.Pudding.apply(this, arguments);
@@ -32,7 +32,7 @@
 
   Contract.new = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Lost error: Please call load() first before calling new().");
+      throw new Error("SenderChecker error: Please call load() first before calling new().");
     }
 
     return Contract.Pudding.new.apply(Contract, arguments);
@@ -40,7 +40,7 @@
 
   Contract.at = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Lost error: lease call load() first before calling at().");
+      throw new Error("SenderChecker error: lease call load() first before calling at().");
     }
 
     return Contract.Pudding.at.apply(Contract, arguments);
@@ -48,7 +48,7 @@
 
   Contract.deployed = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Lost error: Please call load() first before calling deployed().");
+      throw new Error("SenderChecker error: Please call load() first before calling deployed().");
     }
 
     return Contract.Pudding.deployed.apply(Contract, arguments);
@@ -59,7 +59,7 @@
   } else {
     // There will only be one version of Pudding in the browser,
     // and we can use that.
-    window.Lost = Contract;
+    window.SenderChecker = Contract;
   }
 
 })();
