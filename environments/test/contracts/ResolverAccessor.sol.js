@@ -8,7 +8,7 @@
     abi: [{"constant":false,"inputs":[],"name":"getResolver","outputs":[{"name":"","type":"address"}],"type":"function"}],
     binary: "6060604052603d8060106000396000f3606060405260e060020a6000350463a9dc491d8114601a575b005b60005473ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
     unlinked_binary: "6060604052603d8060106000396000f3606060405260e060020a6000350463a9dc491d8114601a575b005b60005473ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
-    address: "0x8984263a30e9e692e62fee039414b2d65484c53a",
+    address: "0x9219c751df7f02c3065b4e738a36bc391c59a33b",
     generated_with: "2.0.6",
     contract_name: "ResolverAccessor"
   };

@@ -2,9 +2,11 @@ import "Resolver.sol";
 
 contract EtherRouter {
   Resolver resolver;
+  address creator;
 
   function EtherRouter(Resolver _resolver) {
     resolver = _resolver;
+    creator = msg.sender;
   }
 
   function() {
