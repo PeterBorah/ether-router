@@ -5,17 +5,17 @@
 (function() {
 
   var contract_data = {
-    abi: [{"constant":false,"inputs":[],"name":"getResolver","outputs":[{"name":"","type":"address"}],"type":"function"}],
-    binary: "6060604052603d8060106000396000f3606060405260e060020a6000350463a9dc491d8114601a575b005b60005473ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
-    unlinked_binary: "6060604052603d8060106000396000f3606060405260e060020a6000350463a9dc491d8114601a575b005b60005473ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
-    address: "0x8984263a30e9e692e62fee039414b2d65484c53a",
+    abi: [{"constant":false,"inputs":[{"name":"_one","type":"uint256"}],"name":"setOne","outputs":[],"type":"function"},{"constant":false,"inputs":[],"name":"getOne","outputs":[{"name":"","type":"uint256"}],"type":"function"}],
+    binary: "6060604052603b8060106000396000f3606060405260e060020a600035046377f2556681146024578063ab5ed15014602e575b005b6004356001556022565b6001546060908152602090f3",
+    unlinked_binary: "6060604052603b8060106000396000f3606060405260e060020a600035046377f2556681146024578063ab5ed15014602e575b005b6004356001556022565b6001546060908152602090f3",
+    address: "0x0e126010be74da3aaebcf9b70d0c9406a65d445d",
     generated_with: "2.0.6",
-    contract_name: "ResolverAccessor"
+    contract_name: "One"
   };
 
   function Contract() {
     if (Contract.Pudding == null) {
-      throw new Error("ResolverAccessor error: Please call load() first before creating new instance of this contract.");
+      throw new Error("One error: Please call load() first before creating new instance of this contract.");
     }
 
     Contract.Pudding.apply(this, arguments);
@@ -32,7 +32,7 @@
 
   Contract.new = function() {
     if (Contract.Pudding == null) {
-      throw new Error("ResolverAccessor error: Please call load() first before calling new().");
+      throw new Error("One error: Please call load() first before calling new().");
     }
 
     return Contract.Pudding.new.apply(Contract, arguments);
@@ -40,7 +40,7 @@
 
   Contract.at = function() {
     if (Contract.Pudding == null) {
-      throw new Error("ResolverAccessor error: lease call load() first before calling at().");
+      throw new Error("One error: lease call load() first before calling at().");
     }
 
     return Contract.Pudding.at.apply(Contract, arguments);
@@ -48,7 +48,7 @@
 
   Contract.deployed = function() {
     if (Contract.Pudding == null) {
-      throw new Error("ResolverAccessor error: Please call load() first before calling deployed().");
+      throw new Error("One error: Please call load() first before calling deployed().");
     }
 
     return Contract.Pudding.deployed.apply(Contract, arguments);
@@ -59,7 +59,7 @@
   } else {
     // There will only be one version of Pudding in the browser,
     // and we can use that.
-    window.ResolverAccessor = Contract;
+    window.One = Contract;
   }
 
 })();

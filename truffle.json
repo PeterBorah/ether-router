@@ -16,7 +16,9 @@
     "Lost",
     "SimpleStore",
     "ResolverAccessor",
-    "SenderChecker"
+    "SenderChecker",
+    "One",
+    "Two"
   ],
   "rpc": {
     "host": "localhost",

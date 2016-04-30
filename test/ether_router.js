@@ -95,4 +95,29 @@ contract('EtherRouter', function(accounts) {
           }).catch(done)
       }).catch(done)
   });
+
+  it("should allow upgrades that add storage data", function(done) {
+    var resolver = Resolver.deployed();
+
+    EtherRouter.new(resolver.address).
+      then(function(ether_router) {
+        var fake_one = One.at(ether_router.address);
+        var fake_two = Two.at(ether_router.address);
+        resolver.register("setOne(uint256)", One.deployed().address, 0).
+          then(function() { return resolver.register("getOne()", One.deployed().address, 32) }).
+          then(function() { return resolver.register("setTwo(uint256)", Two.deployed().address, 0) }).
+          then(function() { return resolver.register("getTwo()", Two.deployed().address, 32) }).
+          then(function() { return fake_one.setOne(1) }).
+          then(function() { return fake_two.setTwo(2) }).
+          then(function() { return fake_one.getOne.call() }).
+          then(function(result) {
+            assert.equal(result, 1);
+          }).
+          then(function() { return fake_two.getTwo.call() }).
+          then(function(result) {
+            assert.equal(result, 2);
+            done();
+          }).catch(done)
+      }).catch(done)
+  });
 });
