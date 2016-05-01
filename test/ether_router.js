@@ -120,4 +120,20 @@ contract('EtherRouter', function(accounts) {
           }).catch(done)
       }).catch(done)
   });
+
+  it("should be able to use the fallback contract for unknown signatures", function(done) {
+    var resolver = Resolver.deployed();
+
+    EtherRouter.new(resolver.address).
+      then(function(ether_router) {
+        var fake_answer = TheAnswer.at(ether_router.address);
+        resolver.register("getAnswer()", 0, 0).
+          then(function() { return resolver.setFallback(TheAnswer.deployed().address) }).
+          then(function() { return fake_answer.getAnswer.call() }).
+          then(function(result) {
+            assert.equal(result, 42);
+            done();
+          }).catch(done);
+      }).catch(done);
+  });
 });
