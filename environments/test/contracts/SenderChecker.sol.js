@@ -8,7 +8,7 @@
     abi: [{"constant":false,"inputs":[],"name":"checkSender","outputs":[{"name":"","type":"address"}],"type":"function"}],
     binary: "6060604052603b8060106000396000f3606060405260e060020a600035046347fb0bed8114601a575b005b3373ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
     unlinked_binary: "6060604052603b8060106000396000f3606060405260e060020a600035046347fb0bed8114601a575b005b3373ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
-    address: "0xd70991912ec56ecfe40de5c3e6801a9bf33855a1",
+    address: "0x56befb4a37351f1f27c6b16b007aca2db7afd57f",
     generated_with: "2.0.6",
     contract_name: "SenderChecker"
   };

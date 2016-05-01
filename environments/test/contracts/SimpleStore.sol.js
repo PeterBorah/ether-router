@@ -8,7 +8,7 @@
     abi: [{"constant":false,"inputs":[{"name":"_n","type":"uint256"}],"name":"store","outputs":[],"type":"function"},{"constant":false,"inputs":[],"name":"getStored","outputs":[{"name":"","type":"uint256"}],"type":"function"}],
     binary: "6060604052603b8060106000396000f3606060405260e060020a60003504636057361d81146024578063e1f7ec5a14602e575b005b6004356001556022565b6001546060908152602090f3",
     unlinked_binary: "6060604052603b8060106000396000f3606060405260e060020a60003504636057361d81146024578063e1f7ec5a14602e575b005b6004356001556022565b6001546060908152602090f3",
-    address: "0x5b25869cd2fd5e0beeab2f4419cf98de214821f3",
+    address: "0x1bff3ac98c788af28c6f72ed011598d184b906bc",
     generated_with: "2.0.6",
     contract_name: "SimpleStore"
   };
