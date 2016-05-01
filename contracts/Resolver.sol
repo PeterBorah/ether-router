@@ -3,6 +3,10 @@ contract Resolver {
   mapping (bytes4 => Pointer) public pointers;
   address public fallback;
 
+  function Resolver(address _fallback) {
+    fallback = _fallback;
+  }
+
   function register(string signature, address destination, uint outsize) {
     pointers[bytes4(sha3(signature))] = Pointer(destination, outsize);
   }
