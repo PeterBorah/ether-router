@@ -18,7 +18,8 @@
     "ResolverAccessor",
     "SenderChecker",
     "One",
-    "Two"
+    "Two",
+    "List"
   ],
   "rpc": {
     "host": "localhost",
