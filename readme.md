@@ -2,6 +2,10 @@
 
 Allows you to have a contract with a stable address, but fully controllable and upgradeable behavior.
 
+### Disclaimer
+
+This is very much experimental code. Please be extremely careful if you make use of this.
+
 ### Basic Usage
 
 Deploy a `Resolver` contract to the blockchain, and point it to the contracts which define the desired behavior. The functions needed to fully configure a `Resolver` are covered in the next section.
