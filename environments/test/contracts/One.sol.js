@@ -8,7 +8,7 @@
     abi: [{"constant":false,"inputs":[{"name":"_one","type":"uint256"}],"name":"setOne","outputs":[],"type":"function"},{"constant":false,"inputs":[],"name":"getOne","outputs":[{"name":"","type":"uint256"}],"type":"function"}],
     binary: "6060604052603b8060106000396000f3606060405260e060020a600035046377f2556681146024578063ab5ed15014602e575b005b6004356001556022565b6001546060908152602090f3",
     unlinked_binary: "6060604052603b8060106000396000f3606060405260e060020a600035046377f2556681146024578063ab5ed15014602e575b005b6004356001556022565b6001546060908152602090f3",
-    address: "0x2f0b6a00638e37f344a9eb048ccd472472a72da5",
+    address: "0xb66a1627b6c78ec0049dda3c702aa040f609eab4",
     generated_with: "2.0.9",
     contract_name: "One"
   };

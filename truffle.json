@@ -19,7 +19,8 @@
     "SenderChecker",
     "One",
     "Two",
-    "List"
+    "List",
+    "Thrower"
   ],
   "rpc": {
     "host": "localhost",

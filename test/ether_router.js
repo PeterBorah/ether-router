@@ -162,4 +162,17 @@ contract('EtherRouter', function(accounts) {
           }).catch(done)
       }).catch(done)
   });
+
+  it("should propagate errors", function(done) {
+    var resolver = Resolver.deployed();
+
+    EtherRouter.new(resolver.address).
+      then(function(ether_router) {
+        var fake_thrower = Thrower.at(ether_router.address);
+        resolver.register("throws()", Thrower.deployed().address, 0).
+          then(function() { return fake_thrower.throws() }).
+          then(assert.fail, function(err) { done(); }).
+          catch(done);
+      }).catch(done);
+  });
 });
