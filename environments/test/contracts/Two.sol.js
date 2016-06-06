@@ -8,8 +8,8 @@
     abi: [{"constant":false,"inputs":[{"name":"_one","type":"uint256"}],"name":"setOne","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_two","type":"uint256"}],"name":"setTwo","outputs":[],"type":"function"},{"constant":false,"inputs":[],"name":"getOne","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[],"name":"getTwo","outputs":[{"name":"","type":"uint256"}],"type":"function"}],
     binary: "606060405260688060106000396000f3606060405260e060020a600035046377f255668114603857806391ce8e04146042578063ab5ed15014604c578063ee784123146055575b005b6004356001556036565b6004356002556036565b605e6001545b90565b605e6002546052565b6060908152602090f3",
     unlinked_binary: "606060405260688060106000396000f3606060405260e060020a600035046377f255668114603857806391ce8e04146042578063ab5ed15014604c578063ee784123146055575b005b6004356001556036565b6004356002556036565b605e6001545b90565b605e6002546052565b6060908152602090f3",
-    address: "0x1e40b15f8422debff2e75f6311dc6e2627742dae",
-    generated_with: "2.0.6",
+    address: "0xa415dca3abb00a079dd483b20855399a53a73ecd",
+    generated_with: "2.0.9",
     contract_name: "Two"
   };
 
@@ -40,7 +40,7 @@
 
   Contract.at = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Two error: lease call load() first before calling at().");
+      throw new Error("Two error: Please call load() first before calling at().");
     }
 
     return Contract.Pudding.at.apply(Contract, arguments);

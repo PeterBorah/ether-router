@@ -8,8 +8,8 @@
     abi: [{"constant":false,"inputs":[{"name":"_one","type":"uint256"}],"name":"setOne","outputs":[],"type":"function"},{"constant":false,"inputs":[],"name":"getOne","outputs":[{"name":"","type":"uint256"}],"type":"function"}],
     binary: "6060604052603b8060106000396000f3606060405260e060020a600035046377f2556681146024578063ab5ed15014602e575b005b6004356001556022565b6001546060908152602090f3",
     unlinked_binary: "6060604052603b8060106000396000f3606060405260e060020a600035046377f2556681146024578063ab5ed15014602e575b005b6004356001556022565b6001546060908152602090f3",
-    address: "0xe20d4ba97f5000eee78ba018a283c12546fbaa4f",
-    generated_with: "2.0.6",
+    address: "0x2f0b6a00638e37f344a9eb048ccd472472a72da5",
+    generated_with: "2.0.9",
     contract_name: "One"
   };
 
@@ -40,7 +40,7 @@
 
   Contract.at = function() {
     if (Contract.Pudding == null) {
-      throw new Error("One error: lease call load() first before calling at().");
+      throw new Error("One error: Please call load() first before calling at().");
     }
 
     return Contract.Pudding.at.apply(Contract, arguments);

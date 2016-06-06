@@ -8,8 +8,8 @@
     abi: [{"constant":false,"inputs":[{"name":"x","type":"uint256"},{"name":"y","type":"uint256"}],"name":"multiply","outputs":[{"name":"","type":"uint256"}],"type":"function"}],
     binary: "6060604052602b8060106000396000f3606060405260e060020a6000350463165c4a168114601a575b005b602435600435026060908152602090f3",
     unlinked_binary: "6060604052602b8060106000396000f3606060405260e060020a6000350463165c4a168114601a575b005b602435600435026060908152602090f3",
-    address: "0x9c4a9e21b7fec1147c8821743af799695ae3319b",
-    generated_with: "2.0.6",
+    address: "0x366ebeba86fe610f7f8d50e0e3b5854409776187",
+    generated_with: "2.0.9",
     contract_name: "Multiplier"
   };
 
@@ -40,7 +40,7 @@
 
   Contract.at = function() {
     if (Contract.Pudding == null) {
-      throw new Error("Multiplier error: lease call load() first before calling at().");
+      throw new Error("Multiplier error: Please call load() first before calling at().");
     }
 
     return Contract.Pudding.at.apply(Contract, arguments);

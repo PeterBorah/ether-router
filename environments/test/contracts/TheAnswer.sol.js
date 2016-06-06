@@ -8,8 +8,8 @@
     abi: [{"constant":false,"inputs":[],"name":"getAnswer","outputs":[{"name":"","type":"uint256"}],"type":"function"}],
     binary: "606060405260268060106000396000f3606060405260e060020a60003504639c16667c8114601a575b005b602a6060908152602090f3",
     unlinked_binary: "606060405260268060106000396000f3606060405260e060020a60003504639c16667c8114601a575b005b602a6060908152602090f3",
-    address: "0x70352b4de6593a2401acb397f503581b2f04d7a1",
-    generated_with: "2.0.6",
+    address: "0x9b482cbcfb8e4b0ef423224f1697ffa2865c194e",
+    generated_with: "2.0.9",
     contract_name: "TheAnswer"
   };
 
@@ -40,7 +40,7 @@
 
   Contract.at = function() {
     if (Contract.Pudding == null) {
-      throw new Error("TheAnswer error: lease call load() first before calling at().");
+      throw new Error("TheAnswer error: Please call load() first before calling at().");
     }
 
     return Contract.Pudding.at.apply(Contract, arguments);

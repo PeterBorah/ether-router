@@ -8,8 +8,8 @@
     abi: [{"constant":false,"inputs":[],"name":"getResolver","outputs":[{"name":"","type":"address"}],"type":"function"}],
     binary: "6060604052603d8060106000396000f3606060405260e060020a6000350463a9dc491d8114601a575b005b60005473ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
     unlinked_binary: "6060604052603d8060106000396000f3606060405260e060020a6000350463a9dc491d8114601a575b005b60005473ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
-    address: "0x3e27d55b42375f105136595010458f1c596f7b8d",
-    generated_with: "2.0.6",
+    address: "0x775854b29a6cb637de6ae8480499f306ec16b22b",
+    generated_with: "2.0.9",
     contract_name: "ResolverAccessor"
   };
 
@@ -40,7 +40,7 @@
 
   Contract.at = function() {
     if (Contract.Pudding == null) {
-      throw new Error("ResolverAccessor error: lease call load() first before calling at().");
+      throw new Error("ResolverAccessor error: Please call load() first before calling at().");
     }
 
     return Contract.Pudding.at.apply(Contract, arguments);

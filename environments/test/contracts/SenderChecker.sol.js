@@ -8,8 +8,8 @@
     abi: [{"constant":false,"inputs":[],"name":"checkSender","outputs":[{"name":"","type":"address"}],"type":"function"}],
     binary: "6060604052603b8060106000396000f3606060405260e060020a600035046347fb0bed8114601a575b005b3373ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
     unlinked_binary: "6060604052603b8060106000396000f3606060405260e060020a600035046347fb0bed8114601a575b005b3373ffffffffffffffffffffffffffffffffffffffff166060908152602090f3",
-    address: "0xb87fecb414900878937e327c70c4cb28fd5b258c",
-    generated_with: "2.0.6",
+    address: "0xb636a0280a4e49b2a82ee5b7b486cc3c183d4352",
+    generated_with: "2.0.9",
     contract_name: "SenderChecker"
   };
 
@@ -40,7 +40,7 @@
 
   Contract.at = function() {
     if (Contract.Pudding == null) {
-      throw new Error("SenderChecker error: lease call load() first before calling at().");
+      throw new Error("SenderChecker error: Please call load() first before calling at().");
     }
 
     return Contract.Pudding.at.apply(Contract, arguments);
