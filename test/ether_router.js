@@ -146,7 +146,7 @@ contract('EtherRouter', function(accounts) {
         var fake_list = List.at(ether_router.address);
         resolver.register("setList(uint256,uint256[])", List.deployed().address, 0).
           then(function() { return resolver.register("getAll(uint256)", List.deployed().address, 0) }).
-          then(function() { return resolver.registerLengthFunction("getAll(uint256)", "getLength(uint256)", List.deployed().address) }).
+          then(function() { return resolver.registerLengthFunction("getAll(uint256)", "getReturnSize(uint256)", List.deployed().address) }).
           then(function() { return fake_list.setList(key, [0,1,2,3,4,5,6]) }).
           then(function() { return fake_list.getAll.call(key) }).
           then(function(result) {
@@ -158,6 +158,32 @@ contract('EtherRouter', function(accounts) {
             assert.equal(result[4], 4);
             assert.equal(result[5], 5);
             assert.equal(result[6], 6);
+            done();
+          }).catch(done)
+      }).catch(done)
+  });
+
+  it("should not over-provision return size", function(done) {
+    var resolver = Resolver.deployed();
+    var key = 42;
+
+    EtherRouter.new(resolver.address).
+      then(function(ether_router) {
+        var fake_list = List.at(ether_router.address);
+        resolver.register("setList(uint256,uint256[])", List.deployed().address, 0).
+          then(function() { return resolver.register("getAll(uint256)", List.deployed().address, 0) }).
+          then(function() { return resolver.registerLengthFunction("getAll(uint256)", "getLength(uint256)", List.deployed().address) }).
+          then(function() { return fake_list.setList(key, [0,1,2,3,4,5,6]) }).
+          then(function() { return fake_list.getAll.call(key) }).
+          then(function(result) {
+            assert.equal(result.length, 7); // Length is passed at beginning of return value.
+            assert.equal(result[0], 0);
+            assert.equal(result[1], 1);
+            assert.equal(result[2], 2);
+            assert.equal(result[3], 3);
+            assert.equal(result[4], 4);
+            assert.equal(result[5], 0); // Not included in truncated return value.
+            assert.equal(result[6], 0);
             done();
           }).catch(done)
       }).catch(done)

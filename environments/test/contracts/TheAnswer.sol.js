@@ -8,7 +8,7 @@
     abi: [{"constant":false,"inputs":[],"name":"getAnswer","outputs":[{"name":"","type":"uint256"}],"type":"function"}],
     binary: "606060405260268060106000396000f3606060405260e060020a60003504639c16667c8114601a575b005b602a6060908152602090f3",
     unlinked_binary: "606060405260268060106000396000f3606060405260e060020a60003504639c16667c8114601a575b005b602a6060908152602090f3",
-    address: "0x07308a6491ff95dda4b7fe6f9c77cb264c75ffe9",
+    address: "0xbc6bd7d01b0078c2a27f063089d10be9b6335bcf",
     generated_with: "2.0.9",
     contract_name: "TheAnswer"
   };

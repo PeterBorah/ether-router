@@ -8,7 +8,7 @@
     abi: [{"constant":false,"inputs":[],"name":"getNumbers","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"type":"function"}],
     binary: "606060405260408060106000396000f3606060405260e060020a600035046389f915f68114601a575b005b600460609081526008608052600f60a052601060c0908152601760e052602a6101005290f3",
     unlinked_binary: "606060405260408060106000396000f3606060405260e060020a600035046389f915f68114601a575b005b600460609081526008608052600f60a052601060c0908152601760e052602a6101005290f3",
-    address: "0xb97976bff49016141fdc8edbeb0e1d17433c0fb1",
+    address: "0x3e1dd78b5417e80776445f0ab123c4149f2b46d6",
     generated_with: "2.0.9",
     contract_name: "Lost"
   };

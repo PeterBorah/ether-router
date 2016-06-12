@@ -8,7 +8,7 @@
     abi: [{"constant":false,"inputs":[{"name":"_one","type":"uint256"}],"name":"setOne","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_two","type":"uint256"}],"name":"setTwo","outputs":[],"type":"function"},{"constant":false,"inputs":[],"name":"getOne","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[],"name":"getTwo","outputs":[{"name":"","type":"uint256"}],"type":"function"}],
     binary: "606060405260688060106000396000f3606060405260e060020a600035046377f255668114603857806391ce8e04146042578063ab5ed15014604c578063ee784123146055575b005b6004356001556036565b6004356002556036565b605e6001545b90565b605e6002546052565b6060908152602090f3",
     unlinked_binary: "606060405260688060106000396000f3606060405260e060020a600035046377f255668114603857806391ce8e04146042578063ab5ed15014604c578063ee784123146055575b005b6004356001556036565b6004356002556036565b605e6001545b90565b605e6002546052565b6060908152602090f3",
-    address: "0x2822c80a8c68bb9ad95d2a8c6935c8dcc098fa6d",
+    address: "0xb1db46f0b729768f5a2befc16fa0e2f8dfcf428b",
     generated_with: "2.0.9",
     contract_name: "Two"
   };

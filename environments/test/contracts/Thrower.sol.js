@@ -8,7 +8,7 @@
     abi: [{"constant":false,"inputs":[],"name":"throws","outputs":[],"type":"function"}],
     binary: "606060405260208060106000396000f3606060405260e060020a6000350463b71e9c238114601a575b005b6018600256",
     unlinked_binary: "606060405260208060106000396000f3606060405260e060020a6000350463b71e9c238114601a575b005b6018600256",
-    address: "0x5a27a59c13d546ff7a18b48ace693d60d2f46135",
+    address: "0x7f0c00e31d009c81b6cb5ad237a323bbf7801f0f",
     generated_with: "2.0.9",
     contract_name: "Thrower"
   };
