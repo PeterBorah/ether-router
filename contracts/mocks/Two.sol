@@ -1,4 +1,4 @@
-import "mocks/One.sol";
+import "./One.sol";
 
 contract Two is One {
   uint two;
