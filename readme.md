@@ -4,7 +4,7 @@ Allows you to have a contract with a stable address, but fully controllable and 
 
 ### Disclaimer
 
-This is very much experimental code. Please be extremely careful if you make use of this.
+This library has NOT been security reviewed, pentested, production-hardened, or used in anger. Do not use for any contract intended to control more than, like, $10. There are definitely bugs, and it WILL lose your money.
 
 ### Basic Usage
 
