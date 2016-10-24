@@ -1,3 +1,5 @@
+pragma solidity ^0.4.2;
+
 contract Resolver {
   struct Pointer { address destination; uint outsize; }
   mapping (bytes4 => Pointer) public pointers;
@@ -9,7 +11,7 @@ contract Resolver {
 
   modifier onlyAdmin {
     if (msg.sender != admin) { throw; }
-    _
+    _;
   }
 
   function setAdmin(address _admin) onlyAdmin {

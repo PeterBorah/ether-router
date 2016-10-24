@@ -1,3 +1,5 @@
+pragma solidity ^0.4.2;
+
 contract List {
   address resolver;
   address creator;
@@ -19,9 +21,5 @@ contract List {
 
   function getAll(uint key) returns(uint[]) {
     return data[key];
-  }
-
-  function() returns(uint) {
-    return 43;
   }
 }

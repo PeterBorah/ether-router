@@ -1,3 +1,4 @@
+pragma solidity ^0.4.2;
 contract SimpleStore {
   address resolver;
   uint n;
