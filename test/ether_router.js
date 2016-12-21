@@ -6,6 +6,7 @@ contract('EtherRouter', function(accounts) {
       then(function(ether_router) {
         var fake_answer = TheAnswer.at(ether_router.address);
         resolver.register("getAnswer()", TheAnswer.deployed().address, 32).
+          then(function() { return fake_answer.getAnswer() }).
           then(function() { return fake_answer.getAnswer.call() }).
           then(function(result) {
             assert.equal(result, 42);
