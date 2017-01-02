@@ -1,4 +1,4 @@
-pragma solidity ^0.4.4;
+pragma solidity ^0.4.7;
 import "./Resolver.sol";
 
 contract EtherRouter {
@@ -14,17 +14,7 @@ contract EtherRouter {
     uint r;
 
     // Get routing information for the called function
-    var (destination, outsize, length_destination, length_sig) = resolver.lookup(msg.sig);
-
-    // Get dynamic return size, if necessary
-    if (length_destination != 0) {
-      assembly {
-        mstore(mload(0x40), length_sig)
-        calldatacopy(add(4, mload(0x40)), 4, sub(calldatasize, 4))
-        r := delegatecall(sub(gas, 700), length_destination, mload(0x40), calldatasize, mload(0x40), 32)
-        outsize := mul(mload(0x40), 32)
-      }
-    }
+    var (destination, outsize) = resolver.lookup(msg.sig, msg.data);
 
     // Make the call
     assembly {
