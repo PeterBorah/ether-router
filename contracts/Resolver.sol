@@ -40,16 +40,16 @@ contract Resolver {
   }
 
   function lookup(bytes4 sig, bytes msg_data) returns(address destination, uint outsize) {
-    if (pointers[sig].destination == 0) {
-      // Use fallback as default
-      destination = fallback;
-      outsize = 32;
-    } else {
+    if (pointers[sig].destination != 0) { 
       destination = pointers[sig].destination;
       outsize = pointers[sig].outsize;
+    } else { 
+      // Default
+      destination = fallback;
+      outsize = 32;
     }
 
-    if (length_pointers[sig].destination != 0) {
+    if (length_pointers[sig].destination != 0) { // If dynamically-sized
       outsize = getLength(sig, msg_data);
     }
   }
