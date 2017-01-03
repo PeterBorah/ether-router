@@ -15,13 +15,15 @@ contract Resolver {
     _;
   }
 
-  function setAdmin(address _admin) onlyAdmin {
-    admin = _admin;
-  }
-
   function Resolver(address _fallback) {
     admin = msg.sender;
     fallback = _fallback;
+  }
+
+  // Administrative functions
+
+  function setAdmin(address _admin) onlyAdmin {
+    admin = _admin;
   }
 
   function replace(Resolver _replacement) onlyAdmin {
@@ -40,9 +42,7 @@ contract Resolver {
     fallback = _fallback;
   }
 
-  function stringToSig(string signature) returns(bytes4) {
-    return bytes4(sha3(signature));
-  }
+  // Public API
 
   function lookup(bytes4 sig, bytes msg_data) returns(address destination, uint outsize) {
     if (address(replacement) != 0) { return replacement.lookup(sig, msg_data); }
@@ -61,6 +61,8 @@ contract Resolver {
     }
   }
 
+  // Helpers
+
   function getLength(bytes4 sig, bytes msg_data) returns(uint outsize) {
     uint r;
     address length_destination = length_pointers[sig].destination;
@@ -75,5 +77,9 @@ contract Resolver {
 
     // Throw if the call failed
     if (r != 1) { throw;}
+  }
+
+  function stringToSig(string signature) returns(bytes4) {
+    return bytes4(sha3(signature));
   }
 }
