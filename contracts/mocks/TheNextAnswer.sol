@@ -1,6 +1,6 @@
 pragma solidity ^0.4.2;
-contract TheAnswer {
+contract TheNextAnswer {
   function getAnswer() constant returns(uint) {
-    return 42;
+    return 43;
   }
 }

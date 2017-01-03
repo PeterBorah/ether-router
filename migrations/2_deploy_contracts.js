@@ -10,6 +10,7 @@ module.exports = function(deployer) {
     One,
     Two,
     List,
-    Thrower
+    Thrower,
+    TheNextAnswer
   ]);
 };

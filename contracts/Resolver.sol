@@ -5,6 +5,7 @@ contract Resolver {
   mapping (bytes4 => Pointer) public pointers;
   address public fallback;
   address public admin;
+  Resolver public replacement;
 
   struct LengthPointer { bytes4 sig; address destination; }
   mapping (bytes4 => LengthPointer) public length_pointers;
@@ -21,6 +22,10 @@ contract Resolver {
   function Resolver(address _fallback) {
     admin = msg.sender;
     fallback = _fallback;
+  }
+
+  function replace(Resolver _replacement) onlyAdmin {
+    replacement = _replacement;
   }
 
   function register(string signature, address destination, uint outsize) onlyAdmin {
@@ -40,6 +45,8 @@ contract Resolver {
   }
 
   function lookup(bytes4 sig, bytes msg_data) returns(address destination, uint outsize) {
+    if (address(replacement) != 0) { return replacement.lookup(sig, msg_data); }
+
     if (pointers[sig].destination != 0) { 
       destination = pointers[sig].destination;
       outsize = pointers[sig].outsize;

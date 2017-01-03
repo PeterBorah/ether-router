@@ -44,4 +44,37 @@ contract('Resolver', function(accounts) {
         done();
       }).catch(done);
   });
+
+  it("should allow itself to be replaced by a newer version", function(done) {
+    var first_resolver;
+    var second_resolver;
+    var fake_answer;
+
+    Resolver.new(TheAnswer.address).
+      then(function(result) { first_resolver = result; }).
+      then(function() { return Resolver.new(TheNextAnswer.address); }).
+      then(function(result) { second_resolver = result; }).
+      then(function() { return EtherRouter.new(first_resolver.address); }).
+      then(function(result) { fake_answer = TheAnswer.at(result.address); }).
+      then(function() { return fake_answer.getAnswer() }).
+      then(function(result) {
+        assert.equal(result, 42);
+      }).
+      then(function() { return first_resolver.replace(second_resolver.address); }).
+      then(function() { return fake_answer.getAnswer() }).
+      then(function(result) {
+        assert.equal(result, 43);
+        done();
+      }).catch(done);
+  });
+
+  it("should not allow anyone but admin to set a replacement", function(done) {
+    var resolver;
+
+    Resolver.new(0).
+      then(function(result) { resolver = result; }).
+      then(function() { return resolver.replace(accounts[1], {from: accounts[2]}) }).
+      then(assert.fail, function(err) { done(); }).
+      catch(done);
+  });
 });
