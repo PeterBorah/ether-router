@@ -20,6 +20,13 @@ contract Resolver {
     fallback = _fallback;
   }
 
+  // Public API
+  function lookup(bytes4 sig, bytes msg_data) returns(address, uint) {
+    if (address(replacement) != 0) { return replacement.lookup(sig, msg_data); } // If Resolver has been replaced, pass call to replacement
+
+    return (destination(sig, msg_data), outsize(sig, msg_data));
+  }
+
   // Administrative functions
 
   function setAdmin(address _admin) onlyAdmin {
@@ -42,28 +49,31 @@ contract Resolver {
     fallback = _fallback;
   }
 
-  // Public API
+  // Helpers
 
-  function lookup(bytes4 sig, bytes msg_data) returns(address destination, uint outsize) {
-    if (address(replacement) != 0) { return replacement.lookup(sig, msg_data); }
-
-    if (pointers[sig].destination != 0) { 
-      destination = pointers[sig].destination;
-      outsize = pointers[sig].outsize;
-    } else { 
-      // Default
-      destination = fallback;
-      outsize = 32;
-    }
-
-    if (length_pointers[sig].destination != 0) { // If dynamically-sized
-      outsize = getLength(sig, msg_data);
+  function destination(bytes4 sig, bytes msg_data) returns(address) {
+    address storedDestination = pointers[sig].destination;
+    if (storedDestination != 0) {
+      return storedDestination;
+    } else {
+      return fallback;
     }
   }
 
-  // Helpers
+  function outsize(bytes4 sig, bytes msg_data) returns(uint) {
+    if (length_pointers[sig].destination != 0) {
+      // Dynamically sized
+      return dynamicLength(sig, msg_data);
+    } else if (pointers[sig].destination != 0) {
+      // Stored destination and outsize
+      return pointers[sig].outsize;
+    } else {
+      // Default
+      return 32;
+    }
+  }
 
-  function getLength(bytes4 sig, bytes msg_data) returns(uint outsize) {
+  function dynamicLength(bytes4 sig, bytes msg_data) returns(uint outsize) {
     uint r;
     address length_destination = length_pointers[sig].destination;
     bytes4 length_sig = length_pointers[sig].sig;
