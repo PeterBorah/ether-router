@@ -8,7 +8,7 @@ contract Resolver {
   Resolver public replacement;
 
   struct LengthPointer { bytes4 sig; address destination; }
-  mapping (bytes4 => LengthPointer) public length_pointers;
+  mapping (bytes4 => LengthPointer) public lengthPointers;
 
   modifier onlyAdmin {
     if (msg.sender != admin) { throw; }
@@ -21,10 +21,10 @@ contract Resolver {
   }
 
   // Public API
-  function lookup(bytes4 sig, bytes msg_data) returns(address, uint) {
-    if (address(replacement) != 0) { return replacement.lookup(sig, msg_data); } // If Resolver has been replaced, pass call to replacement
+  function lookup(bytes4 sig, bytes msgData) returns(address, uint) {
+    if (address(replacement) != 0) { return replacement.lookup(sig, msgData); } // If Resolver has been replaced, pass call to replacement
 
-    return (destination(sig, msg_data), outsize(sig, msg_data));
+    return (destination(sig, msgData), outsize(sig, msgData));
   }
 
   // Administrative functions
@@ -41,8 +41,8 @@ contract Resolver {
     pointers[stringToSig(signature)] = Pointer(destination, outsize);
   }
 
-  function registerLengthFunction(string main_signature, string length_signature, address destination) onlyAdmin {
-    length_pointers[stringToSig(main_signature)] = LengthPointer(stringToSig(length_signature), destination);
+  function registerLengthFunction(string mainSignature, string lengthSignature, address destination) onlyAdmin {
+    lengthPointers[stringToSig(mainSignature)] = LengthPointer(stringToSig(lengthSignature), destination);
   }
 
   function setFallback(address _fallback) onlyAdmin {
@@ -51,7 +51,7 @@ contract Resolver {
 
   // Helpers
 
-  function destination(bytes4 sig, bytes msg_data) returns(address) {
+  function destination(bytes4 sig, bytes msgData) returns(address) {
     address storedDestination = pointers[sig].destination;
     if (storedDestination != 0) {
       return storedDestination;
@@ -60,10 +60,10 @@ contract Resolver {
     }
   }
 
-  function outsize(bytes4 sig, bytes msg_data) returns(uint) {
-    if (length_pointers[sig].destination != 0) {
+  function outsize(bytes4 sig, bytes msgData) returns(uint) {
+    if (lengthPointers[sig].destination != 0) {
       // Dynamically sized
-      return dynamicLength(sig, msg_data);
+      return dynamicLength(sig, msgData);
     } else if (pointers[sig].destination != 0) {
       // Stored destination and outsize
       return pointers[sig].outsize;
@@ -73,15 +73,15 @@ contract Resolver {
     }
   }
 
-  function dynamicLength(bytes4 sig, bytes msg_data) returns(uint outsize) {
+  function dynamicLength(bytes4 sig, bytes msgData) returns(uint outsize) {
     uint r;
-    address length_destination = length_pointers[sig].destination;
-    bytes4 length_sig = length_pointers[sig].sig;
+    address lengthDestination = lengthPointers[sig].destination;
+    bytes4 lengthSig = lengthPointers[sig].sig;
 
     assembly {
-      mstore(mload(0x40), length_sig)
+      mstore(mload(0x40), lengthSig)
       calldatacopy(add(4, mload(0x40)), 4, sub(calldatasize, 4))
-      r := delegatecall(sub(gas, 700), length_destination, mload(0x40), calldatasize, mload(0x40), 32)
+      r := delegatecall(sub(gas, 700), lengthDestination, mload(0x40), calldatasize, mload(0x40), 32)
       outsize := mul(mload(0x40), 32)
     }
 
