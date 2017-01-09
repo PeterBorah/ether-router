@@ -1,6 +1,6 @@
 {
   "name": "ether-router",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Upgrade functionality for Ethereum contracts",
   "license": "MIT",
   "repository": { "type": "git", "url": "https://github.com/ownage-ltd/ether-router"}
