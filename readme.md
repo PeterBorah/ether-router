@@ -28,10 +28,9 @@ For the most part, `EtherRouter`-compatible contracts are just normal Solidity c
 
 - If your contracts create other contracts, and you wish the subsidiary contracts to take advantage of the same upgradeability, they will need to deploy `EtherRouter`s and follow the same procedure as the contracts you deploy manually.
 
-- The first two storage slots in the contract will be used to store the address of the `Resolver`, and the address that created the contract. Therefore, you will need to start your contracts with the following two lines:
+- The first storage slot in the contract will be used to store the address of the `Resolver`. Therefore, you will need to start your contracts with the following line:
 ```
 Resolver resolver;
-address creator;
 ``` 
 
-Additionally, when you upgrade a contract that has already stored data on the blockchain, you will need to be sure not to change the organization of your contract's storage. You can safely add new storage variables, but do not delete or re-order existing ones. In the future, I hope to provide more tooling around data migrations.
+Additionally, when you upgrade a contract that has already stored data on the blockchain, you will need to be sure not to change the organization of your contract's storage. You can safely add new storage variables, but do not delete or re-order existing ones. It may also be risky to change the version of the Solidity compiler used, as there is no guarantee the storage layout will remain the same. I hope to release tools to more robustly handle data storage in the near future.
