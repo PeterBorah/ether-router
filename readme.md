@@ -6,6 +6,10 @@ Allows you to have a contract with a stable address, but fully controllable and 
 
 This library has NOT been security reviewed, pentested, production-hardened, or used in anger. Do not use for any contract intended to control more than, like, $10. There are definitely bugs, and it WILL lose your money.
 
+### NPM
+
+EtherRouter is available on npm as [`ether-router`](https://www.npmjs.com/package/ether-router), and is compatible with [Truffle's beta NPM integration](http://truffleframework.com/tutorials/package-management).
+
 ### Basic Usage
 
 Deploy a `Resolver` contract to the blockchain, and point it to the contracts which define the desired behavior. The functions needed to fully configure a `Resolver` are covered in the next section.
