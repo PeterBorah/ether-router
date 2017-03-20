@@ -10,6 +10,8 @@ contract Resolver {
   struct LengthPointer { bytes4 sig; address destination; }
   mapping (bytes4 => LengthPointer) public lengthPointers;
 
+  event FallbackChanged(address oldFallback, address newFallback); 
+
   modifier onlyAdmin {
     if (msg.sender != admin) { throw; }
     _;
@@ -46,6 +48,7 @@ contract Resolver {
   }
 
   function setFallback(address _fallback) onlyAdmin {
+    FallbackChanged(fallback, _fallback);
     fallback = _fallback;
   }
 
