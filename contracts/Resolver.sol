@@ -1,4 +1,4 @@
-pragma solidity ^0.4.7;
+pragma solidity ^0.4.8;
 
 contract Resolver {
   struct Pointer { address destination; uint outsize; }

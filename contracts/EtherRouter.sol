@@ -1,4 +1,4 @@
-pragma solidity ^0.4.7;
+pragma solidity ^0.4.8;
 import "./Resolver.sol";
 
 contract EtherRouter {
@@ -8,7 +8,7 @@ contract EtherRouter {
     resolver = _resolver;
   }
 
-  function() {
+  function() payable {
     uint r;
 
     // Get routing information for the called function

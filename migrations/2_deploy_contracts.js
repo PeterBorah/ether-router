@@ -11,6 +11,7 @@ var Two = artifacts.require("Two.sol");
 var List = artifacts.require("List.sol");
 var Thrower = artifacts.require("Thrower.sol");
 var TheNextAnswer = artifacts.require("TheNextAnswer.sol");
+var PayableContract = artifacts.require("PayableContract.sol");
 
 module.exports = function(deployer) {
   deployer.deploy([
@@ -25,6 +26,7 @@ module.exports = function(deployer) {
     Two,
     List,
     Thrower,
-    TheNextAnswer
+    TheNextAnswer,
+    PayableContract
   ]);
 };

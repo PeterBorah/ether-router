@@ -11,6 +11,7 @@ var Two = artifacts.require("Two.sol");
 var List = artifacts.require("List.sol");
 var Thrower = artifacts.require("Thrower.sol");
 var TheNextAnswer = artifacts.require("TheNextAnswer.sol");
+var PayableContract = artifacts.require("PayableContract.sol");
 
 contract('EtherRouter', function(accounts) {
   it("should be able to get back a return value", function(done) {
@@ -230,5 +231,26 @@ contract('EtherRouter', function(accounts) {
           then(assert.fail, function(err) { done(); }).
           catch(done);
       }).catch(done);
+  });
+
+  it("should be able to pass ether to payable functions", function(done) {
+    var resolver;
+    var payableContract;
+
+    Resolver.new(0).
+      then(function(result) { resolver = result }).
+      then(function() { return EtherRouter.new(resolver.address); }).
+      then(function(ether_router) {
+        var fake_payable = PayableContract.at(ether_router.address);
+        PayableContract.deployed().
+          then(function(result) { payableContract = result; }).
+          then(function() { return resolver.setFallback(payableContract.address); }).
+          then(function() { return fake_payable.payFunction({value: 10}) }).
+          then(function() { return fake_payable.sentAmount.call() }).
+          then(function(result) {
+            assert.equal(result, 10);
+            done();
+          }).catch(done)
+      }).catch(done)
   });
 });
