@@ -28,4 +28,26 @@ contract EtherRouter {
       return(mload(0x40), outsize)
     }
   }
+
+  function getDynamicLength(address lengthDestination, bytes4 lengthSig, bytes msgData) returns(uint outsize) {
+    uint r;
+    bytes memory callData = msgData;
+    
+    // Replace signature in original calldata
+    callData[0] = lengthSig[0];
+    callData[1] = lengthSig[1];
+    callData[2] = lengthSig[2];
+    callData[3] = lengthSig[3];
+
+    // Make the call
+    assembly {
+      let len := mload(callData)
+      r := delegatecall(sub(gas, 700), lengthDestination, add(callData, 0x20), len, mload(0x40), 0x20)
+      outsize := mul(mload(mload(0x40)), 0x20)
+    }
+
+    // Throw if the call failed
+    if (r != 1) { throw;}
+  }
+
 }

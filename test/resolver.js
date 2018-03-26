@@ -48,6 +48,14 @@ contract('Resolver', function(accounts) {
       catch(done);
   });
 
+  it("shouldn't allow non-admins to change router", function(done) {
+    Resolver.new(0).
+      then(function(new_resolver) { resolver = new_resolver; }).
+      then(function() { return resolver.setRouter(0, {from: accounts[2]}) }).
+      then(assert.fail, function(err) { done(); }).
+      catch(done);
+  });
+
   it("should allow the admin to change the admin", function(done) {
     Resolver.new(0).
       then(function(new_resolver) { resolver = new_resolver; }).

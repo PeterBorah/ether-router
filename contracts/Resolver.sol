@@ -1,16 +1,19 @@
 pragma solidity ^0.4.8;
+import "./EtherRouter.sol";
 
 contract Resolver {
   struct Pointer { address destination; uint outsize; }
   mapping (bytes4 => Pointer) public pointers;
   address public fallback;
   address public admin;
+  EtherRouter public router;
   Resolver public replacement;
 
   struct LengthPointer { bytes4 sig; address destination; }
   mapping (bytes4 => LengthPointer) public lengthPointers;
 
   event FallbackChanged(address oldFallback, address newFallback); 
+  event RouterChanged(address oldRouter, address newRouter); 
 
   modifier onlyAdmin {
     if (msg.sender != admin) { throw; }
@@ -52,6 +55,10 @@ contract Resolver {
     fallback = _fallback;
   }
 
+  function setRouter(EtherRouter _router) onlyAdmin {
+    RouterChanged(router, _router);
+    router = _router;
+  }
   // Helpers
 
   function destination(bytes4 sig, bytes msgData) returns(address) {
@@ -77,19 +84,11 @@ contract Resolver {
   }
 
   function dynamicLength(bytes4 sig, bytes msgData) returns(uint outsize) {
-    uint r;
+    
     address lengthDestination = lengthPointers[sig].destination;
     bytes4 lengthSig = lengthPointers[sig].sig;
-
-    assembly {
-      mstore(mload(0x40), lengthSig)
-      calldatacopy(add(4, mload(0x40)), 4, sub(calldatasize, 4))
-      r := delegatecall(sub(gas, 700), lengthDestination, mload(0x40), calldatasize, mload(0x40), 32)
-      outsize := mul(mload(0x40), 32)
-    }
-
-    // Throw if the call failed
-    if (r != 1) { throw;}
+    
+    outsize = router.getDynamicLength(lengthDestination, lengthSig, msgData);
   }
 
   function stringToSig(string signature) returns(bytes4) {
