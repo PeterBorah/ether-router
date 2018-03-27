@@ -15,12 +15,14 @@ var PayableContract = artifacts.require("PayableContract.sol");
 
 contract('EtherRouter', function(accounts) {
   it("should be able to get back a return value", function(done) {
-    var resolver;
+    var resolver, ether_router;
 
     Resolver.new(0).
       then(function(result) { resolver = result }).
       then(function() { return EtherRouter.new(resolver.address); }).
-      then(function(ether_router) {
+      then(function(result) { ether_router = result }).
+      then(function() {return resolver.setRouter(ether_router.address)}).
+      then(function() {
         var fake_answer = TheAnswer.at(ether_router.address);
         TheAnswer.deployed().
           then(function(result) { return resolver.register("getAnswer()", result.address, 32); }).
@@ -34,12 +36,14 @@ contract('EtherRouter', function(accounts) {
   });
 
   it("should be able to pass along arguments", function(done) {
-    var resolver;
+    var resolver, ether_router;
 
     Resolver.new(0).
       then(function(result) { resolver = result }).
       then(function() { return EtherRouter.new(resolver.address); }).
-      then(function(ether_router) {
+      then(function(result) { ether_router = result }).
+      then(function() {return resolver.setRouter(ether_router.address)}).
+      then(function() {
         var fake_multiplier = Multiplier.at(ether_router.address);
         Multiplier.deployed().
           then(function(result) { return resolver.register("multiply(uint256,uint256)", result.address, 32); }).
@@ -52,12 +56,14 @@ contract('EtherRouter', function(accounts) {
   });
 
   it("should be able to get multiple return values", function(done) {
-    var resolver;
+    var resolver, ether_router;
 
     Resolver.new(0).
       then(function(result) { resolver = result }).
       then(function() { return EtherRouter.new(resolver.address); }).
-      then(function(ether_router) {
+      then(function(result) { ether_router = result }).
+      then(function() {return resolver.setRouter(ether_router.address)}).
+      then(function() {
         var fake_lost = Lost.at(ether_router.address);
         Lost.deployed().
           then(function(result) { return resolver.register("getNumbers()", result.address, 192); }).
@@ -75,13 +81,15 @@ contract('EtherRouter', function(accounts) {
   });
 
   it("should be able to store data", function(done) {
-    var resolver;
+    var resolver, ether_router;
     var simpleStore;
 
     Resolver.new(0).
       then(function(result) { resolver = result }).
       then(function() { return EtherRouter.new(resolver.address); }).
-      then(function(ether_router) {
+      then(function(result) { ether_router = result }).
+      then(function() {return resolver.setRouter(ether_router.address)}).
+      then(function() {
         var fake_simple_store = SimpleStore.at(ether_router.address);
         SimpleStore.deployed().
           then(function(result) { simpleStore = result; }).
@@ -97,12 +105,14 @@ contract('EtherRouter', function(accounts) {
   });
 
   it("should be able to read data on the contract", function(done) {
-    var resolver;
+    var resolver, ether_router;
 
     Resolver.new(0).
       then(function(result) { resolver = result }).
       then(function() { return EtherRouter.new(resolver.address); }).
-      then(function(ether_router) {
+      then(function(result) { ether_router = result }).
+      then(function() {return resolver.setRouter(ether_router.address)}).
+      then(function() {
         var fake_resolver_accessor = ResolverAccessor.at(ether_router.address);
         ResolverAccessor.deployed().
           then(function(result) { return resolver.register("getResolver()", result.address, 32); }).
@@ -115,12 +125,14 @@ contract('EtherRouter', function(accounts) {
   });
 
   it("should keep its msg.sender", function(done) {
-    var resolver;
+    var resolver, ether_router;
 
     Resolver.new(0).
       then(function(result) { resolver = result }).
       then(function() { return EtherRouter.new(resolver.address); }).
-      then(function(ether_router) {
+      then(function(result) { ether_router = result }).
+      then(function() {return resolver.setRouter(ether_router.address)}).
+      then(function() {
         var fake_sender_checker = SenderChecker.at(ether_router.address);
         SenderChecker.deployed().
           then(function(result) { return resolver.register("checkSender()", result.address, 32); }).
@@ -133,14 +145,16 @@ contract('EtherRouter', function(accounts) {
   });
 
   it("should allow upgrades that add storage data", function(done) {
-    var resolver;
+    var resolver, ether_router;
     var one;
     var two;
 
     Resolver.new(0).
       then(function(result) { resolver = result }).
       then(function() { return EtherRouter.new(resolver.address); }).
-      then(function(ether_router) {
+      then(function(result) { ether_router = result }).
+      then(function() {return resolver.setRouter(ether_router.address)}).
+      then(function() {
         var fake_one = One.at(ether_router.address);
         var fake_two = Two.at(ether_router.address);
         One.deployed().
@@ -166,13 +180,15 @@ contract('EtherRouter', function(accounts) {
   });
 
   it("should be able to use the fallback contract for unknown signatures", function(done) {
-    var resolver;
+    var resolver, ether_router;
     var theAnswer;
 
     Resolver.new(0).
       then(function(result) { resolver = result }).
       then(function() { return EtherRouter.new(resolver.address); }).
-      then(function(ether_router) {
+      then(function(result) { ether_router = result }).
+      then(function() {return resolver.setRouter(ether_router.address)}).
+      then(function() {
         var fake_answer = TheAnswer.at(ether_router.address);
         TheAnswer.deployed().
           then(function(result) { theAnswer = result; }).
@@ -188,13 +204,15 @@ contract('EtherRouter', function(accounts) {
 
   it("should allow variable-return functions to lookup their return size if possible", function(done) {
     var key = 42;
-    var resolver;
+    var resolver, ether_router;
     var list;
 
     Resolver.new(0).
       then(function(result) { resolver = result }).
       then(function() { return EtherRouter.new(resolver.address); }).
-      then(function(ether_router) {
+      then(function(result) { ether_router = result }).
+      then(function() {return resolver.setRouter(ether_router.address)}).
+      then(function() {
         var fake_list = List.at(ether_router.address);
         List.deployed().
           then(function(result) { list = result; }).
@@ -218,12 +236,14 @@ contract('EtherRouter', function(accounts) {
   });
 
   it("should propagate errors", function(done) {
-    var resolver;
+    var resolver, ether_router;
 
     Resolver.new(0).
       then(function(result) { resolver = result }).
       then(function() { return EtherRouter.new(resolver.address); }).
-      then(function(ether_router) {
+      then(function(result) { ether_router = result }).
+      then(function() {return resolver.setRouter(ether_router.address)}).
+      then(function() {
         var fake_thrower = Thrower.at(ether_router.address);
         Thrower.deployed().
           then(function(result) { return resolver.register("throws()", result.address, 0); }).
@@ -234,13 +254,15 @@ contract('EtherRouter', function(accounts) {
   });
 
   it("should be able to pass ether to payable functions", function(done) {
-    var resolver;
+    var resolver, ether_router;
     var payableContract;
 
     Resolver.new(0).
       then(function(result) { resolver = result }).
       then(function() { return EtherRouter.new(resolver.address); }).
-      then(function(ether_router) {
+      then(function(result) { ether_router = result }).
+      then(function() {return resolver.setRouter(ether_router.address)}).
+      then(function() {
         var fake_payable = PayableContract.at(ether_router.address);
         PayableContract.deployed().
           then(function(result) { payableContract = result; }).

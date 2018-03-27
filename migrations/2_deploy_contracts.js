@@ -14,8 +14,9 @@ var TheNextAnswer = artifacts.require("TheNextAnswer.sol");
 var PayableContract = artifacts.require("PayableContract.sol");
 
 module.exports = function(deployer) {
+  deployer.deploy(Resolver,0)
   deployer.deploy([
-    Resolver,
+    
     TheAnswer,
     Multiplier,
     Lost,
